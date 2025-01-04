@@ -1,0 +1,304 @@
+:root {
+    --win-color: #34C759;
+    --lose-color: #FF3B30;
+    --draw-color: #FF9500;
+}
+
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 4rem auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+/* Score board styling */
+.score-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.score {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.score:hover {
+    transform: translateY(-5px);
+}
+
+.score p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.score span {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* Game area styling */
+.game-area {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.result {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    min-height: 2em;
+    color: var(--text);
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.choice {
+    background: var(--card-bg);
+    border: none;
+    padding: 2rem;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.choice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.choice-icon {
+    font-size: 3rem;
+}
+
+.choice-label {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* Controls styling */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.control-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.control-btn i {
+    font-size: 1rem;
+}
+
+/* History section styling */
+.history-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.history-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+.history-item .result-win {
+    color: var(--win-color);
+    font-weight: 600;
+}
+
+.history-item .result-lose {
+    color: var(--lose-color);
+    font-weight: 600;
+}
+
+.history-item .result-tie {
+    color: var(--draw-color);
+    font-weight: 600;
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .score-board {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .choices {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Add choice selection animation */
+.choice.selected {
+    animation: selectChoice 0.5s ease;
+}
+
+@keyframes selectChoice {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 122, 255, 0.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Improve control buttons spacing and clarity */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.control-btn {
+    min-width: 150px;
+    justify-content: center;
+}
+
+/* Enhance history items */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+.result-win {
+    color: var(--win-color);
+    font-weight: 600;
+}
+
+.result-lose {
+    color: var(--lose-color);
+    font-weight: 600;
+}
+
+.result-tie {
+    color: var(--draw-color);
+    font-weight: 600;
+} 
