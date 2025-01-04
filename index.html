@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="theme-toggle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    
 </head>
 <body>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay"></div>
     <nav class="sidebar">
         <div class="sidebar-header">
             <div class="nav-brand">HamitCF</div>
@@ -77,7 +83,9 @@
                 <h2>Projects</h2>
                 <div class="project-grid">
                     <div class="project-card animate scale-up delay-1">
-                        <div class="project-image calculator-img"></div>
+                        <div class="project-image">
+                            <img src="assets/projects/calculator.png" alt="Calculator Project" loading="lazy">
+                        </div>
                         <h3>Web Calculator</h3>
                         <p>A sleek calculator app with basic arithmetic operations and keyboard support</p>
                         <div class="project-links">
@@ -90,7 +98,9 @@
                         </div>
                     </div>
                     <div class="project-card animate scale-up delay-2">
-                        <div class="project-image todo-img"></div>
+                        <div class="project-image">
+                            <img src="assets/projects/todo.png" alt="Todo List Project" loading="lazy">
+                        </div>
                         <h3>To-Do List</h3>
                         <p>A minimalist to-do list app with local storage and drag-and-drop functionality</p>
                         <div class="project-links">
@@ -103,7 +113,9 @@
                         </div>
                     </div>
                     <div class="project-card animate scale-up delay-3">
-                        <div class="project-image rps-img"></div>
+                        <div class="project-image">
+                            <img src="assets/projects/rps.png" alt="Rock Paper Scissors Project" loading="lazy">
+                        </div>
                         <h3>Rock Paper Scissors</h3>
                         <p>Classic game with animated transitions and score tracking</p>
                         <div class="project-links">
@@ -116,7 +128,9 @@
                         </div>
                     </div>
                     <div class="project-card animate scale-up delay-4">
-                        <div class="project-image upcoming-img"></div>
+                        <div class="project-image">
+                            <img src="assets/projects/upcoming.png" alt="E-Commerce Project" loading="lazy">
+                        </div>
                         <h3>E-Commerce Platform</h3>
                         <p>Full-stack e-commerce website with shopping cart and payment integration (Coming Soon)</p>
                         <div class="project-links">
@@ -209,8 +223,8 @@
                         <div class="education-card">
                             <h3>Yildiz Technical University</h3>
                             <p class="degree">Computer Science</p>
-                            <p class="period">Graduating in 2024</p>
-                            <p class="gpa">GPA: 3.75/4.00</p>
+                            <p class="period">Graduated in 2024</p>
+                            <p class="gpa">GPA: 3.31/4.00</p>
                         </div>
                     </div>
                     
@@ -344,6 +358,5 @@
     <script src="script.js"></script>
     <script src="animations.js"></script>
     <script src="theme-toggle.js"></script>
-    <script src="modal.js"></script>
 </body>
 </html> 

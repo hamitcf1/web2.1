@@ -269,9 +269,57 @@ body {
 .project-image {
     width: 100%;
     height: 200px;
-    background-color: var(--secondary-text);
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--card-bg), var(--secondary-text));
+    position: relative;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Image error handling */
+.project-image img:not([src]),
+.project-image img[src=""],
+.project-image img.error {
+    display: none;
+}
+
+/* Placeholder icon for missing images */
+.project-image:not(:has(img[src])):after {
+    content: '\f121';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    color: var(--text);
+    opacity: 0.5;
+}
+
+/* Hover effect only when image exists */
+.project-card:hover .project-image img:not(.error) {
+    transform: scale(1.05);
+}
+
+/* Placeholder for upcoming projects */
+.project-image.upcoming {
+    background: linear-gradient(45deg, var(--card-bg), var(--secondary-text));
+    opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .project-image {
+        height: 180px;
+    }
 }
 
 .project-links {

@@ -197,4 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial check
     handleResize();
+
+    const projectImages = document.querySelectorAll('.project-image img');
+    
+    projectImages.forEach(img => {
+        img.addEventListener('error', function() {
+            this.classList.add('error');
+        });
+    });
 }); 
