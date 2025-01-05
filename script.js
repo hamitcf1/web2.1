@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (current) {
+                    console.log(`Scrolled to section: ${current.id}`);
                     updateActiveLink(current.id);
                     updateSectionHighlight(current);
                 }
@@ -108,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     // Add resize event listener to update highlight positions
     window.addEventListener('resize', () => {
+        console.log('Window resized');
         const activeSection = document.querySelector('section.active');
         if (activeSection) {
             updateSectionHighlight(activeSection);
@@ -117,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle click events on nav links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            console.log(`Navigation clicked: ${link.getAttribute('href')}`);
             e.preventDefault();
             const targetId = link.getAttribute('href').slice(1);
             const targetSection = document.getElementById(targetId);
@@ -148,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const brandButton = document.querySelector('.nav-brand');
     
     brandButton.addEventListener('click', () => {
+        console.log('Brand button clicked - scrolling to top');
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -156,11 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle sidebar toggle
     function toggleSidebar() {
+        console.log('Sidebar toggle clicked');
         sidebar.classList.toggle('collapsed');
         mainContent.classList.toggle('expanded');
         
         // Save sidebar state to localStorage
         const isCollapsed = sidebar.classList.contains('collapsed');
+        console.log(`Sidebar collapsed state: ${isCollapsed}`);
         localStorage.setItem('sidebarCollapsed', isCollapsed);
     }
 
@@ -202,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     projectImages.forEach(img => {
         img.addEventListener('error', function() {
+            console.log(`Image failed to load: ${this.src}`);
             this.classList.add('error');
         });
     });
@@ -212,16 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseButton = document.querySelector('.modal-close');
 
     getInTouchButton.addEventListener('click', () => {
+        console.log('Get in Touch button clicked');
         contactModal.classList.add('show');
     });
 
     modalCloseButton.addEventListener('click', () => {
+        console.log('Modal close button clicked');
         contactModal.classList.remove('show');
     });
 
     // Optional: Close modal when clicking outside
     contactModal.addEventListener('click', (e) => {
         if (e.target === contactModal) {
+            console.log('Modal closed by clicking outside');
             contactModal.classList.remove('show');
         }
     });
