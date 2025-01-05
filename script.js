@@ -205,4 +205,24 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('error');
         });
     });
+
+    // Add this code to handle the "Get in Touch" button click
+    const getInTouchButton = document.getElementById('get-in-touch');
+    const contactModal = document.getElementById('contact-modal');
+    const modalCloseButton = document.querySelector('.modal-close');
+
+    getInTouchButton.addEventListener('click', () => {
+        contactModal.classList.add('show');
+    });
+
+    modalCloseButton.addEventListener('click', () => {
+        contactModal.classList.remove('show');
+    });
+
+    // Optional: Close modal when clicking outside
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.classList.remove('show');
+        }
+    });
 }); 
